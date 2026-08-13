@@ -1,0 +1,35 @@
+---
+interface Props {
+  /** Override the interstitial copy shown to iOS in-app-browser visitors. */
+  message?: string;
+  class?: string;
+}
+
+const {
+  message = 'For the best experience, open this in your browser: tap ••• (or the Safari icon), then "Open in Safari".',
+  class: className,
+} = Astro.props;
+---
+
+<div
+  id="inapp-escape-banner"
+  class={className ?? 'hidden bg-accent-soft text-fg border-border border-b px-4 py-3 text-sm'}
+  role="status"
+>
+  {message}
+</div>
+
+<script>
+  import { detectInApp, detectPlatform } from '../lib/detect.ts';
+  import { buildAndroidIntentUrl } from '../lib/escape.ts';
+
+  const { isInApp } = detectInApp();
+  if (isInApp) {
+    const platform = detectPlatform(navigator.userAgent);
+    if (platform === 'android') {
+      window.location.href = buildAndroidIntentUrl(window.location.href);
+    } else if (platform === 'ios') {
+      document.getElementById('inapp-escape-banner')?.classList.remove('hidden');
+    }
+  }
+</script>

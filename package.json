@@ -1,0 +1,49 @@
+{
+  "name": "@vdaluz/astro-inapp-escape",
+  "version": "0.1.0",
+  "description": "In-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for Astro sites - protects affiliate links that platforms prohibit from rendering in their own webviews.",
+  "keywords": [
+    "astro",
+    "astro-component",
+    "in-app-browser",
+    "webview",
+    "affiliate-marketing"
+  ],
+  "homepage": "https://github.com/vdaluz/astro-inapp-escape#readme",
+  "bugs": {
+    "url": "https://github.com/vdaluz/astro-inapp-escape/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vdaluz/astro-inapp-escape.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "check": "astro check",
+    "test": "node --test"
+  },
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./InAppEscape.astro": "./src/components/InAppEscape.astro"
+  },
+  "dependencies": {
+    "inapp-spy": "^5.0.10"
+  },
+  "peerDependencies": {
+    "astro": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@types/node": "^26.1.1",
+    "astro": "^7.1.3",
+    "typescript": "^6.0.3"
+  }
+}
