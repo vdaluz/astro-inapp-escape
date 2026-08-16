@@ -15,7 +15,7 @@ npm test        # node --test
 
 ## Workflow
 
-**No worktrees.** Work directly on `main` - this repo is small, single-maintainer, and worked sequentially, per the standing rule for the sibling `@vdaluz/*` packages (astro-blog, astro-affiliate, astro-og-cards, astro-opt-in-analytics all follow this). Consumers only ever see tagged releases, so `main` is safe to iterate on.
+Shared preamble: `.claude/rules/git-workflow-direct-to-main.md`.
 
 ## Conventions
 
