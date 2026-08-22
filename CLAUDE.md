@@ -4,7 +4,7 @@ This file provides guidance to Claude Code when working in this repository.
 
 ## What this repo is
 
-`@vdaluz/astro-inapp-escape`: in-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for vdaluz.com-family sites. Detects when a page is loaded inside a social app's own webview and helps the visitor reach the system browser instead - some platforms (Amazon Associates among them) prohibit their affiliate links from rendering inside another app's in-app browser at all. Consumed by site repos as an npm-registry semver pin (live on wq1k.com, freetoolbox.net, imperfectsystems.com; pending on vdaluz.com, vicstradamus.com); tracked in Plane under the AST project.
+`@vdaluz/astro-inapp-escape`: in-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for vdaluz.com-family sites. Detects when a page is loaded inside a social app's own webview and helps the visitor reach the system browser instead - some platforms (Amazon Associates among them) prohibit their affiliate links from rendering inside another app's in-app browser at all. Consumed by all five family sites as an npm-registry semver pin; tracked in Plane under the AST project.
 
 ## Commands
 
@@ -36,7 +36,8 @@ npm-registry semver pins (not tarball URLs, since META-90) - see root `~/Repos/C
 
 ## Consumers
 
-Live: wq1k.com (WQ1K-165), freetoolbox.net (FTB-59), imperfectsystems.com (IPS-530) - all
-confirmed pinned to `^0.1.0` as of META-90. Still pending, tracked as per-site issues blocked on
-adoption rather than on this package's first publish (that already happened): VDA-1188
-(vdaluz.com), VIC-42 (vicstradamus.com).
+- wq1k.com
+- freetoolbox.net
+- imperfectsystems.com
+- vdaluz.com (`src/layouts/Layout.astro`)
+- vicstradamus.com (`src/layouts/Layout.astro`)

@@ -1,6 +1,6 @@
 {
   "name": "@vdaluz/astro-inapp-escape",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "In-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for Astro sites - protects affiliate links that platforms prohibit from rendering in their own webviews.",
   "keywords": [
     "astro",

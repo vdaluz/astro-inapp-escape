@@ -1,6 +1,8 @@
 # @vdaluz/astro-inapp-escape
 
+[![npm version](https://img.shields.io/npm/v/@vdaluz/astro-inapp-escape.svg)](https://www.npmjs.com/package/@vdaluz/astro-inapp-escape)
 [![CI](https://github.com/vdaluz/astro-inapp-escape/actions/workflows/ci.yml/badge.svg)](https://github.com/vdaluz/astro-inapp-escape/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/@vdaluz/astro-inapp-escape.svg)](LICENSE)
 
 Some platforms refuse to let their own affiliate links render inside another app's in-app browser at all - Amazon's Associates program is explicit about this: links have to open in the system browser or the Amazon app, not a webview embedded inside Instagram, TikTok, or similar. `@vdaluz/astro-inapp-escape` detects when a visitor is inside one of those in-app browsers and helps them reach the system browser: an automatic redirect on Android, an instructional interstitial on iOS (there's no reliable automated escape there - see [Platform support](#platform-support)). Ships raw `.astro` and `.ts` - the consuming app's Astro/Vite compiles them (no prebuild step).
 
@@ -9,21 +11,6 @@ Some platforms refuse to let their own affiliate links render inside another app
 ```
 npm install @vdaluz/astro-inapp-escape
 ```
-
-Alternatively, a pinned https tarball from a tag works too, with no registry involved:
-
-```jsonc
-// package.json
-"dependencies": {
-  "@vdaluz/astro-inapp-escape": "https://github.com/vdaluz/astro-inapp-escape/archive/refs/tags/v0.1.0.tar.gz"
-}
-```
-
-> **Why a tarball, not `github:vdaluz/astro-inapp-escape#v0.1.0`?** npm canonicalizes GitHub
-> shorthand (and even an explicit `git+https://` URL) to `git+ssh://` in the lockfile.
-> CI runners (e.g. Cloudflare Pages/Workers) have no SSH key, so `npm ci` would fail to
-> clone it. The `/archive/refs/tags/<tag>.tar.gz` URL is anonymous https with an integrity
-> hash in the lockfile, it just works in CI. Bump the tag in the URL to upgrade.
 
 Peer dependency: `astro` >= 6. Runtime dependency: [`inapp-spy`](https://github.com/shalanah/inapp-spy) - a maintained, TypeScript-typed in-app-browser detection library, rather than hand-rolled user-agent regex.
 
@@ -81,7 +68,7 @@ There's no standard web API for a page to force itself out of an iOS in-app brow
 
 ## Per-app glue
 
-This is a component library, not a drop-in blog. Each consuming app is responsible for:
+This is a component library, not a drop-in escape mechanism. Each consuming app is responsible for:
 
 - Placing `<InAppEscape />` somewhere it renders on every page that needs protection (typically a shared layout).
 - Token CSS variables referenced by the default interstitial styling: `accent-soft`, `fg`, `border`. See [`@vdaluz/astro-blog`'s `tokens.example.css`](https://github.com/vdaluz/astro-blog) for the full token set these sites already share.
@@ -97,3 +84,7 @@ Issues welcome. PRs by discussion - open an issue first for anything beyond a ty
 - [freetoolbox.net](https://freetoolbox.net)
 - [imperfectsystems.com](https://imperfectsystems.com)
 - [vicstradamus.com](https://vicstradamus.com)
+
+## License
+
+MIT
