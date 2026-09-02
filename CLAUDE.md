@@ -19,10 +19,9 @@ Shared preamble: `.claude/rules/git-workflow-direct-to-main.md`.
 
 ## Conventions
 
-Shared `@vdaluz/astro-*` conventions (raw source/no build step, per-path exports):
+Shared `@vdaluz/astro-*` conventions (raw source/no build step, per-path exports, `.ts` extensions on relative imports):
 `.claude/rules/astro-package-conventions.md`.
 
-- **Explicit `.ts` extensions on relative imports** (matches astro-og-cards/astro-affiliate) - required for `node --test` to resolve them directly without a bundler.
 - **One runtime dependency: `inapp-spy`.** Unlike astro-blog/astro-affiliate's dependency-free convention, this package legitimately needs a maintained in-app-browser UA-detection library rather than hand-rolled regex. Don't add further runtime dependencies without deciding that's worth it - the family default is still dependency-free.
 - **No `package=` pin on the Android intent link.** `buildAndroidIntentUrl` deliberately omits `package=com.android.chrome` from the generated `intent://` URL so it opens the device's actual default browser, not a hardcoded Chrome assumption - pinning Chrome breaks devices whose default is Samsung Internet or another browser.
 - **iOS has no automated escape.** The WICG proposal for a native in-app-browser exit API ([WICG/proposals#173](https://github.com/WICG/proposals/issues/173)) is still open and unresolved as of this package's creation. `InAppEscape.astro` renders an instructional interstitial on iOS ("tap ••• to open in Safari") rather than attempting a fragile automated bypass.
