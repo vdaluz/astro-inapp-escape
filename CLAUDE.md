@@ -1,7 +1,5 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working in this repository.
-
 ## What this repo is
 
 `@vdaluz/astro-inapp-escape`: in-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for vdaluz.com-family sites. Detects when a page is loaded inside a social app's own webview and helps the visitor reach the system browser instead - some platforms (Amazon Associates among them) prohibit their affiliate links from rendering inside another app's in-app browser at all. Consumed by all five family sites as an npm-registry semver pin; tracked in Plane under the AST project.
