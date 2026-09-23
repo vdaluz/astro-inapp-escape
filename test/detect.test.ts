@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { detectInApp, detectPlatform } from '../src/lib/detect.ts';
+import { decideEscape } from '../src/lib/escape.ts';
 
 // Real UAs, verified against inapp-spy 5.0.10 directly before writing these assertions.
 const INSTAGRAM_ANDROID_UA =
@@ -44,4 +45,24 @@ test('detectPlatform falls back to other for a desktop UA', () => {
   const desktopUa =
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
   assert.equal(detectPlatform(desktopUa), 'other');
+});
+
+const DESKTOP_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
+test('decideEscape redirects an Android in-app browser', () => {
+  assert.equal(decideEscape(detectInApp(INSTAGRAM_ANDROID_UA).isInApp, INSTAGRAM_ANDROID_UA), 'redirect');
+});
+
+test('decideEscape shows the banner in an iOS in-app browser', () => {
+  assert.equal(decideEscape(detectInApp(INSTAGRAM_IOS_UA).isInApp, INSTAGRAM_IOS_UA), 'banner');
+});
+
+test('decideEscape does nothing in regular Chrome on Android or Safari on iOS', () => {
+  assert.equal(decideEscape(detectInApp(CHROME_ANDROID_UA).isInApp, CHROME_ANDROID_UA), 'none');
+  assert.equal(decideEscape(detectInApp(SAFARI_IOS_UA).isInApp, SAFARI_IOS_UA), 'none');
+});
+
+test('decideEscape does nothing for an in-app browser on a platform with no escape path', () => {
+  assert.equal(decideEscape(true, DESKTOP_UA), 'none');
 });

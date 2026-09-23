@@ -13,23 +13,21 @@ const {
 
 <div
   id="inapp-escape-banner"
-  class={className ?? 'hidden bg-accent-soft text-fg border-border border-b px-4 py-3 text-sm'}
+  hidden
+  class={className ?? 'bg-accent-soft text-fg border-border border-b px-4 py-3 text-sm'}
   role="status"
 >
   {message}
 </div>
 
 <script>
-  import { detectInApp, detectPlatform } from '../lib/detect.ts';
-  import { buildAndroidIntentUrl } from '../lib/escape.ts';
+  import { detectInApp } from '../lib/detect.ts';
+  import { buildAndroidIntentUrl, decideEscape } from '../lib/escape.ts';
 
-  const { isInApp } = detectInApp();
-  if (isInApp) {
-    const platform = detectPlatform(navigator.userAgent);
-    if (platform === 'android') {
-      window.location.href = buildAndroidIntentUrl(window.location.href);
-    } else if (platform === 'ios') {
-      document.getElementById('inapp-escape-banner')?.classList.remove('hidden');
-    }
+  const action = decideEscape(detectInApp().isInApp, navigator.userAgent);
+  if (action === 'redirect') {
+    window.location.href = buildAndroidIntentUrl(window.location.href);
+  } else if (action === 'banner') {
+    document.getElementById('inapp-escape-banner')?.removeAttribute('hidden');
   }
 </script>

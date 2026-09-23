@@ -32,7 +32,7 @@ On load, it detects whether the current visitor is inside a known in-app browser
 - **iOS:** renders a small interstitial banner instructing the visitor to tap "•••" (or the Safari icon) and choose "Open in Safari." No automated iOS escape is attempted - see [Platform support](#platform-support) for why.
 - **Everywhere else** (regular browser, desktop, unrecognized in-app browser): renders nothing.
 
-Override the interstitial copy or its default classes:
+Override the interstitial copy or its default classes. The component controls visibility itself through the `hidden` attribute, so a custom `class` only needs styling, never `hidden` or a display rule:
 
 ```astro
 <InAppEscape message="Tap the ••• menu above and choose Open in Safari to continue." class="my-banner" />
