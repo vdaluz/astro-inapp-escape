@@ -4,6 +4,8 @@ All notable changes to this project are documented here. Format loosely follows 
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-24
+
 ### Changed
 
 - **Breaking for custom `class` values that include `hidden`.** `<InAppEscape>` now hides the banner with the `hidden` attribute instead of a `hidden` class, and the iOS path removes the attribute. Previously, passing `class` replaced the whole default string, dropped the `hidden` class, and showed the banner to every visitor on every platform (including the README's own `class="my-banner"` example). A custom `class` no longer needs `hidden`, and must drop it when upgrading: the attribute removal would leave a `hidden` class in place and the iOS banner would never appear.
