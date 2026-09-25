@@ -2,7 +2,7 @@
 
 ## What this repo is
 
-`@vdaluz/astro-inapp-escape`: in-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for vdaluz.com-family sites. Detects when a page is loaded inside a social app's own webview and helps the visitor reach the system browser instead - some platforms (Amazon Associates among them) prohibit their affiliate links from rendering inside another app's in-app browser at all. Consumed by all five family sites as an npm-registry semver pin; tracked in Plane under the AST project.
+`@vdaluz/astro-inapp-escape`: in-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for vdaluz.com-family sites. Detects when a page is loaded inside a social app's own webview and helps the visitor reach the system browser instead - some platforms (Amazon Associates among them) prohibit their affiliate links from rendering inside another app's in-app browser at all. Consumed as an npm-registry semver pin by the sites in the README's Consumers section; tracked in Plane under the AST project.
 
 ## Commands
 
@@ -37,8 +37,4 @@ concrete steps.
 
 ## Consumers
 
-- wq1k.com
-- freetoolbox.net
-- imperfectsystems.com
-- vdaluz.com (`src/layouts/Layout.astro`)
-- vicstradamus.com (`src/layouts/Layout.astro`)
+The README's Consumers section is the single list. Update it when a repo adds or drops its `@vdaluz/astro-inapp-escape` dependency (`grep -l '"@vdaluz/astro-inapp-escape"' ~/Repos/*/package.json`).
