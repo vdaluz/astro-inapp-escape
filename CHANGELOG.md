@@ -8,6 +8,10 @@ All notable changes to this project are documented here. Format loosely follows 
 
 - **Breaking for custom `class` values that include `hidden`.** `<InAppEscape>` now hides the banner with the `hidden` attribute instead of a `hidden` class, and the iOS path removes the attribute. Previously, passing `class` replaced the whole default string, dropped the `hidden` class, and showed the banner to every visitor on every platform (including the README's own `class="my-banner"` example). A custom `class` no longer needs `hidden`, and must drop it when upgrading: the attribute removal would leave a `hidden` class in place and the iOS banner would never appear.
 
+### Fixed
+
+- `detectInApp` now accepts `string | null`, so the README's documented SSR call `detectInApp(request.headers.get('user-agent'))` type-checks under a strict tsconfig. `Headers.get` returns `null` for a missing header, which the old `string | undefined` signature rejected. A `null` argument behaves like no argument.
+
 ## [0.1.1] - 2026-08-22
 
 ### Fixed

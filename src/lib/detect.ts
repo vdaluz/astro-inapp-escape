@@ -4,7 +4,7 @@ export type InAppDetection = ReturnType<typeof InAppSpy>;
 
 export type Platform = 'android' | 'ios' | 'other';
 
-export function detectInApp(ua?: string): InAppDetection {
+export function detectInApp(ua?: string | null): InAppDetection {
   return InAppSpy(ua ? { ua } : undefined);
 }
 

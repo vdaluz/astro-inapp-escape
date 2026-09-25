@@ -33,6 +33,15 @@ test('detectInApp reports no in-app browser for regular Safari', () => {
   assert.equal(detectInApp(SAFARI_IOS_UA).isInApp, false);
 });
 
+test('detectInApp accepts a Headers.get result, as the README SSR example calls it', () => {
+  const headers = new Headers({ 'user-agent': INSTAGRAM_ANDROID_UA });
+  assert.equal(detectInApp(headers.get('user-agent')).appKey, 'instagram');
+});
+
+test('detectInApp treats a missing user-agent header (null) like no argument', () => {
+  assert.deepEqual(detectInApp(null), detectInApp());
+});
+
 test('detectPlatform identifies Android', () => {
   assert.equal(detectPlatform(INSTAGRAM_ANDROID_UA), 'android');
 });
