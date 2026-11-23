@@ -2,7 +2,7 @@
 
 ## What this repo is
 
-`@vdaluz/astro-inapp-escape`: in-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for vdaluz.com-family sites. Detects when a page is loaded inside a social app's own webview and helps the visitor reach the system browser instead - some platforms (Amazon Associates among them) prohibit their affiliate links from rendering inside another app's in-app browser at all. Consumed as an npm-registry semver pin by the sites in the README's Consumers section; tracked in Plane under the AST project.
+`@vdaluz/astro-inapp-escape`: in-app-browser (Instagram, TikTok, Facebook, etc) detection and escape for vdaluz.com-family sites. Detects when a page is loaded inside a social app's own webview and helps the visitor reach the system browser instead - some platforms (Amazon Associates among them) prohibit their affiliate links from rendering inside another app's in-app browser at all. Consumed as an npm-registry semver pin by the sites in the README's Consumers section; tracked in OPM under the AST project.
 
 ## Commands
 
@@ -15,9 +15,9 @@ npm test        # node --test
 
 Shared preamble: `.claude/rules/git-workflow-direct-to-main.md`.
 
-## Plane (AST project)
+## Issue tracking (AST project)
 
-Project ID, state UUIDs, and label UUIDs: **`.claude/plane.yml`**.
+Issues live in OPM (`mcp__opm__*` tools). `.claude/plane.yml` supplies only the project key (`project_identifier`); its UUIDs are Plane's, so never pass them to an OPM tool. Resolve OPM IDs at run time per `~/.claude/skills/_shared/opm-reference.md`.
 
 ## Conventions
 
